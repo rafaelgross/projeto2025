@@ -28,7 +28,7 @@ Este projeto simula um trabalho real de Analista/Engenheiro de Dados. Você vai 
 
 Cada grupo deve escolher **UM** dos seguintes domínios (ou propor outro com aprovação prévia):
 
-### Opção 1: Vendas e Logística (MAIS FÁCIL - recomendado)
+### Opção 1: Vendas e Logística
 - **Dataset:** Brazilian E-Commerce Olist (vocês já conhecem!)
 - **Onde baixar:** 
   - Kaggle: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
