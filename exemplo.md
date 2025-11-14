@@ -264,28 +264,28 @@ LIMIT 10;
 ## 7. Visualizações
 
 ### 7.1. Gráfico 1: Receita Mensal por Categoria
-![Gráfico Receita Mensal](../visualizacoes/grafico_1_receita_mensal.png)
+
 
 **Descrição:** Gráfico de linhas mostrando evolução temporal da receita das 8 principais categorias.
 
 **Insight:** Sazonalidade clara em Novembro (Black Friday) e Dezembro (Natal).
 
 ### 7.2. Gráfico 2: Top 10 Produtos
-![Gráfico Top Produtos](../visualizacoes/grafico_2_top_produtos.png)
+
 
 **Descrição:** Barras horizontais dos produtos mais rentáveis.
 
 **Insight:** Concentração: top 3 produtos respondem por 40% da receita.
 
 ### 7.3. Gráfico 3: Curva ABC
-![Gráfico ABC](../visualizacoes/grafico_5_curva_abc.png)
+
 
 **Descrição:** Curva de Pareto mostrando % acumulada de receita por produto.
 
 **Insight:** 26% dos produtos (classe A) geram 80% da receita.
 
 ### 7.4. Gráfico 4: Ticket Médio por Estado
-![Gráfico Ticket UF](../visualizacoes/grafico_4_ticket_medio_uf.png)
+
 
 **Descrição:** Mapa de calor ou barras do ticket médio por UF.
 
@@ -357,11 +357,11 @@ Seq Scan on fact_sales_monthly (cost=0..234 rows=1283)
 
 ### 10.1. Resultados Alcançados
 Resumo dos objetivos cumpridos:
-- ✅ DW dimensional completo com 4 dimensões SCD2
-- ✅ Pipeline ETL automatizado e validado
-- ✅ 5 consultas analíticas respondendo perguntas de negócio
-- ✅ 4 visualizações profissionais
-- ✅ Performance otimizada (46x ganho em queries mensais)
+-  DW dimensional completo com 4 dimensões SCD2
+-  Pipeline ETL automatizado e validado
+-  5 consultas analíticas respondendo perguntas de negócio
+-  4 visualizações profissionais
+-  Performance otimizada (46x ganho em queries mensais)
 
 ### 10.2. Principais Insights
 1. **Concentração de receita:** 26% dos produtos geram 80% da receita (curva ABC)
