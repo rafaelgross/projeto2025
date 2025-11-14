@@ -4,7 +4,7 @@
 **Modalidade:** Grupos de 4 pessoas  
 **Formato:** Entrega online (repositório + documentação + apresentação)  
 **Peso:** Prova prática substitutiva  
-**Prazo:** [definir: sugestão 3-4 semanas]
+**Prazo:** entrega no site rafaelgross.pro.br 28/11/25
 
 ---
 
