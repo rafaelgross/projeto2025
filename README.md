@@ -124,11 +124,11 @@ dim_seller        -----> (opcional)         Quem vendeu
 ```
 
 **Requisitos mínimos:**
-- ☑️ **3 dimensões** (pelo menos 1 com histórico de mudanças - SCD Type 2)
-- ☑️ **1 tabela fato** (onde ficam as vendas/eventos principais)
-- ☑️ **Dimensão de data** (dim_date com ano, mês, dia, etc.)
-- ☑️ **Chaves geradas automaticamente** (não usar CPF/ID original como chave primária)
-- ☑️ **Diagrama visual** (desenho do modelo - pode usar draw.io)
+-  **3 dimensões** (pelo menos 1 com histórico de mudanças - SCD Type 2)
+- **1 tabela fato** (onde ficam as vendas/eventos principais)
+- **Dimensão de data** (dim_date com ano, mês, dia, etc.)
+- **Chaves geradas automaticamente** (não usar CPF/ID original como chave primária)
+- **Diagrama visual** (desenho do modelo - pode usar draw.io)
 
 **Exemplo de SCD Type 2 (rastreamento de mudança):**
 Se um cliente mudar de cidade:
@@ -140,10 +140,10 @@ customer_key | customer_id | name    | city       | start_date | end_date   | is
 Assim você sabe que João morava em SP e depois mudou para Campinas!
 
 **Como será avaliado:**
-- ✅ Modelo correto e fácil de entender
-- ✅ SCD2 funcionando (detecta mudanças)
-- ✅ Documentação: o que cada tabela representa
-- ✅ Sem erros de relacionamento (todas as vendas têm cliente, produto, data)
+-  Modelo correto e fácil de entender
+-  SCD2 funcionando (detecta mudanças)
+-  Documentação: o que cada tabela representa
+-  Sem erros de relacionamento (todas as vendas têm cliente, produto, data)
 
 ### 3.2. Pipeline ETL/ELT (25 pts)
 
@@ -154,29 +154,29 @@ Assim você sabe que João morava em SP e depois mudou para Campinas!
 ```
 1. STAGING (00_staging.sql)
    CSVs ---> Views temporárias
-   ✅ Lê os arquivos CSV
-   ✅ Não transforma nada ainda
+    Lê os arquivos CSV
+    Não transforma nada ainda
 
 2. OLTP (01_oltp.sql)
    Views ---> Tabelas normalizadas
-   ✅ Cria clientes, produtos, pedidos separados
-   ✅ Remove duplicatas
-   ✅ Trata dados nulos
+    Cria clientes, produtos, pedidos separados
+    Remove duplicatas
+    Trata dados nulos
 
 3. DW ESTRUTURA (02_dw_model.sql)
    Cria dimensões e fato (vazias ainda)
-   ✅ dim_customer, dim_product, dim_date, fact_sales
+    dim_customer, dim_product, dim_date, fact_sales
 
 4. ETL CARGA (03_etl_load.sql)
    OLTP ---> DW (popula tudo)
-   ✅ Preenche dim_date (todos os dias do período)
-   ✅ Carrega dimensões com SCD2
-   ✅ Carrega fact_sales
+   Preenche dim_date (todos os dias do período)
+   Carrega dimensões com SCD2
+   Carrega fact_sales
 
 5. VALIDAÇÕES
-   ✅ Conta linhas: OLTP tem 1000 pedidos? DW tem 1000 na fato?
-   ✅ Sem NULLs nas chaves estrangeiras
-   ✅ Todas as vendas têm cliente/produto válido
+   Conta linhas: OLTP tem 1000 pedidos? DW tem 1000 na fato?
+   Sem NULLs nas chaves estrangeiras
+   Todas as vendas têm cliente/produto válido
 ```
 
 **Importante:**
@@ -185,10 +185,10 @@ Assim você sabe que João morava em SP e depois mudou para Campinas!
 - Comentar o código explicando cada passo
 
 **Como será avaliado:**
-- ✅ Scripts organizados (00, 01, 02, 03...)
-- ✅ Pode reexecutar sem quebrar
-- ✅ Trata erros (dados faltando, duplicados)
-- ✅ Documentação: explica o que cada script faz
+-  Scripts organizados (00, 01, 02, 03...)
+-  Pode reexecutar sem quebrar
+-  Trata erros (dados faltando, duplicados)
+-  Documentação: explica o que cada script faz
 
 ### 3.3. Consultas Analíticas (20 pts)
 
@@ -207,7 +207,7 @@ JOIN dim_date d ON f.date_key = d.date_key
 GROUP BY d.year, d.month
 ORDER BY d.year, d.month;
 ```
-➡️ Mostra como as vendas evoluem ao longo do tempo
+ Mostra como as vendas evoluem ao longo do tempo
 
 **2. Ranking / TOP N (os melhores/piores)**
 ```sql
@@ -221,7 +221,7 @@ GROUP BY p.product_name
 ORDER BY total DESC
 LIMIT 10;
 ```
-➡️ Identifica os produtos campeões de venda
+ Identifica os produtos campeões de venda
 
 **3. Agregação Multidimensional (várias perspectivas)**
 ```sql
@@ -236,7 +236,7 @@ JOIN dim_product p ON f.product_key = p.product_key
 JOIN dim_customer c ON f.customer_key = c.customer_key
 GROUP BY p.category, c.customer_state;
 ```
-➡️ Cruza informações: qual categoria vende mais em qual estado?
+ Cruza informações: qual categoria vende mais em qual estado?
 
 **4. Análise de Cohort / Retenção (comportamento ao longo do tempo)**
 ```sql
@@ -251,7 +251,7 @@ FROM (
 )
 GROUP BY first_purchase_month;
 ```
-➡️ Entende fidelização de clientes
+ Entende fidelização de clientes
 
 **5. KPI (indicador-chave de negócio)**
 ```sql
@@ -265,14 +265,14 @@ JOIN dim_customer c ON f.customer_key = c.customer_key
 GROUP BY c.customer_state
 ORDER BY ticket_medio DESC;
 ```
-➡️ Métrica importante para o negócio
+ Métrica importante para o negócio
 
 **Como será avaliado:**
-- ✅ 5 consultas funcionando corretamente
-- ✅ Usa JOINs, GROUP BY, funções de agregação
-- ✅ Resultados fazem sentido para o negócio
-- ✅ Comentários explicando o que cada query faz
-- ✅ Executa em menos de 30 segundos
+-  5 consultas funcionando corretamente
+-  Usa JOINs, GROUP BY, funções de agregação
+-  Resultados fazem sentido para o negócio
+-  Comentários explicando o que cada query faz
+-  Executa em menos de 30 segundos
 
 ### 3.4. Visualizações (15 pts)
 
@@ -288,7 +288,7 @@ import plotly.express as px
 fig = px.line(df, x='mes', y='vendas', title='Evolução de Vendas')
 fig.write_image('grafico_1_evolucao.png')
 ```
-📈 Mostra tendência: subindo, descendo ou estável
+ Mostra tendência: subindo, descendo ou estável
 
 **2. Gráfico de Barras (comparação)**
 ```python
@@ -296,7 +296,7 @@ fig.write_image('grafico_1_evolucao.png')
 fig = px.bar(df, x='produto', y='receita', title='Top 10 Produtos')
 fig.write_image('grafico_2_top_produtos.png')
 ```
-📊 Compara: qual é maior/menor
+Compara: qual é maior/menor
 
 **3. Mapa de Calor OU Dispersão (correlação)**
 ```python
@@ -304,7 +304,7 @@ fig.write_image('grafico_2_top_produtos.png')
 import seaborn as sns
 sns.heatmap(df.pivot_table(values='vendas', index='estado', columns='mes'))
 ```
-🟥 Mostra padrões: onde/quando tem mais atividade
+ Mostra padrões: onde/quando tem mais atividade
 
 **4. Dashboard / Composição**
 ```python
@@ -317,30 +317,30 @@ fig.add_trace(grafico2, row=1, col=2)
 # ...
 fig.write_html('dashboard.html')
 ```
-📊 Painel completo com vários gráficos
+ Painel completo com vários gráficos
 
 **Ferramentas que você pode usar:**
-- 🐍 Python + Plotly (igual fizemos na aula - RECOMENDADO)
-- 🐍 Python + Matplotlib/Seaborn
-- 📊 Power BI (se souber)
-- 📊 Google Data Studio
-- 📊 Tableau Public
+-  Python + Plotly (igual fizemos na aula - RECOMENDADO)
+-  Python + Matplotlib/Seaborn
+-  Power BI (se souber)
+-  Google Data Studio
+-  Tableau Public
 
 **Requisitos dos gráficos:**
-- ✅ Título claro
-- ✅ Eixos com nomes (não deixar "x" e "y")
-- ✅ Cores profissionais (evitar cores muito berrantes)
-- ✅ Legenda quando necessário
-- ✅ Salvar como PNG ou HTML
+-  Título claro
+-  Eixos com nomes (não deixar "x" e "y")
+-  Cores profissionais (evitar cores muito berrantes)
+-  Legenda quando necessário
+-  Salvar como PNG ou HTML
 
 **Importante:** Para cada gráfico, escreva **1 parágrafo** explicando o insight:
 > "Este gráfico mostra que as vendas cresceram 40% entre janeiro e dezembro, com pico em novembro devido à Black Friday."
 
 **Como será avaliado:**
-- ✅ 4 gráficos diferentes
-- ✅ Visual profissional e legível
-- ✅ Insights escritos para cada gráfico
-- ✅ Arquivos salvos (PNG/HTML)
+-  4 gráficos diferentes
+-  Visual profissional e legível
+-  Insights escritos para cada gráfico
+-  Arquivos salvos (PNG/HTML)
 
 ### 3.5. Performance e Otimização (10 pts - bônus)
 - Criar **1 tabela agregada** ou materialized view
@@ -496,8 +496,8 @@ Enviar via AVA + Git:
 
 ### Templates e Exemplos
 - Use o projeto Olist como referência estrutural
-- Consulte `TUTORIAL.md` para comandos DuckDB
-- Ver `GUIA_DE_AULA_DW.md` para conceitos
+- Consulte `TUTORIAL.md` para comandos DuckDB da da ultima aula
+- Ver `GUIA_DE_AULA_DW.md` para conceitos da ultima aula
 
 ---
 
@@ -521,8 +521,6 @@ R: Grupos de 3 são aceitos (não reduz requisitos). Grupos de 2 ou individuais 
 **P: Podemos reutilizar o código do Olist?**  
 R: Sim, como base estrutural. Mas o domínio, dados e análises devem ser originais.
 
-**P: Como saberei se o modelo está correto?**  
-R: Submeta o Checkpoint 1 para validação. Professor dará feedback em até 3 dias.
 
 ---
 
@@ -541,9 +539,8 @@ Nota = (Checkpoint 1 × 0,10) + (Checkpoint 2 × 0,15) + (Entrega Final × 0,65)
 ## 11. Contato e Dúvidas
 
 - **E-mail:** prof.rafaelgross@fatecjd.edu.br
-- **Horário de atendimento:** [definir]
-- **Fórum do AVA:** Use para dúvidas técnicas (beneficia toda turma)
+
 
 Lembre-se: começar cedo é fundamental. Um bom planejamento (Checkpoint 1) garante 80% do sucesso do projeto!
 
-Bom trabalho! 🚀📊
+Bom trabalho! 
