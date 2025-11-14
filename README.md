@@ -424,7 +424,7 @@ Enviar via AVA + Git:
   - Modelo dimensional
   - 2-3 insights mais relevantes das análises
   - Desafios técnicos e soluções
-- OU apresentação ao vivo (15 min + 5 min perguntas)
+
 
 ---
 
