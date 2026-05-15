@@ -4,7 +4,7 @@
 **Modalidade:** Grupos de 4 pessoas  
 **Formato:** Entrega online (repositório + documentação + apresentação)  
 **Peso:** Prova prática substitutiva  
-**Prazo:** entrega no site rafaelgross.pro.br 28/11/25
+**Prazo:** entrega no site rafaelgross.pro.br 03/06/26
 
 ---
 
@@ -95,8 +95,6 @@ Quer usar outro tema? Pode! Mas envie antes:
 - Link do dataset (onde baixar)
 - 3 perguntas que quer responder
 - Tamanho dos dados (mínimo 10 mil linhas)
-
-**Prazo para aprovação:** [definir - sugestão: 1 semana antes do Checkpoint 1]
 
 **Sites para procurar dados:**
 - Kaggle: https://www.kaggle.com/datasets (maior repositório)
@@ -389,16 +387,10 @@ projeto-dw-grupo-X/
 ---
 
 ## 5. Entregas e Prazos
-
-| Entrega | Data | Peso | Descrição |
-|---------|------|------|-----------|
-| **Checkpoint 1** | Semana 2 | 10% | Escolha do domínio, fonte de dados, modelo conceitual |
-| **Checkpoint 2** | Semana 3 | 15% | Pipeline ETL funcional (staging → oltp → dw) |
-| **Entrega Final** | Semana 4 | 65% | Código completo + documentação + visualizações |
-| **Apresentação** | Semana 5 | 10% | Vídeo gravado (10-15 min) ou apresentação síncrona |
+ |
 
 ### Checkpoint 1 (Planejamento)
-Enviar via AVA:
+Enviar via no site do professor rafaelgross.pro.br:
 - Nome do grupo e integrantes
 - Domínio escolhido e justificativa (1 parágrafo)
 - Link do dataset
